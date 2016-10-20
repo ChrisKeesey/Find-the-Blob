@@ -96,8 +96,12 @@ def findColorSpot(picture, color):
 
 ######################Code Starts Here##################################
 
-
-
+for i in range(1):
+    turnBy(45)
+    takePicture()
+    pic=takePicture()
+    x=findColorSpot(pic,1)
+    print(x)    
 
 
 
