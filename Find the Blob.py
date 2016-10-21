@@ -96,12 +96,35 @@ def findColorSpot(picture, color):
 
 ######################Code Starts Here##################################
 
-for i in range(1):
-    turnBy(45)
+var = input("Choose a color ")
+
+def see():
     takePicture()
     pic=takePicture()
     x=findColorSpot(pic,1)
-    print(x)    
+    print(x)
+    if x>50:
+        forward(1,1)
+        see()
+    if x>0 or x<50 or x>220 or x<300:
+        turnBy(20,40)
+        see()
+    if x == 0:
+        turnBy(randrange(0,30))
+        see()
 
+def find():
+    turnBy(randrange(0,45))
+    takePicture()
+    pic=takePicture()
+    x=findColorSpot(pic,1)
+    print(x)
+    if x>0:
+        forward(1,1)
+        see()
+    if x == 0:
+        find()
+find()
+        
 
 
