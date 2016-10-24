@@ -96,35 +96,63 @@ def findColorSpot(picture, color):
 
 ######################Code Starts Here##################################
 
-var = input("Choose a color ")
+def nextcolor():
+    backward(2.5,2)
+    v = input("Choose a another color ")
+    if v == "red":
+        q = 1
+    if v == "green":
+        q = 2
+    if v == "blue":
+        q = 3
+    if v == "yellow":
+        q = 4
+    find(q)
 
-def see():
+def see(q):
     takePicture()
     pic=takePicture()
-    x=findColorSpot(pic,1)
+    x=findColorSpot(pic,q)
     print(x)
-    if x>50:
-        forward(1,1)
-        see()
-    if x>0 or x<50 or x>220 or x<300:
-        turnBy(20,40)
-        see()
+    if 130<x<256:
+        turnBy(-2)
+        see(q)
+    if 0<x<126:
+        turnBy(2)
+        see(q)
+    if 125<x<131:
+        forward(2.5,2)
+        see(q)
     if x == 0:
-        turnBy(randrange(0,30))
-        see()
+        turnBy(randrange(0,45))
+        see(q)
+    if x == -1:
+        stop()
+        nextcolor()
 
-def find():
+def find(q):
     turnBy(randrange(0,45))
     takePicture()
     pic=takePicture()
-    x=findColorSpot(pic,1)
+    x=findColorSpot(pic,q)
     print(x)
     if x>0:
-        forward(1,1)
-        see()
+        see(q)
     if x == 0:
-        find()
-find()
+        find(q)
         
+c = input("Choose a color ")
+print(c)
+if c == "red":
+    q = 1
+if c == "green":
+    q = 2
+if c == "blue":
+    q = 3
+if c == "yellow":
+    q = 4
+find(q)
+
+
 
 
