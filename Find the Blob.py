@@ -107,6 +107,8 @@ def nextcolor():
         q = 3
     if v == "yellow":
         q = 4
+    if c == "random":
+        q = randrange(1,4)
     find(q)
 
 def see(q):
@@ -124,10 +126,11 @@ def see(q):
         forward(2.5,2)
         see(q)
     if x == 0:
-        turnBy(randrange(0,45))
+        turnBy(randrange(25,50))
         see(q)
     if x == -1:
         stop()
+        print("Blob Found!")
         nextcolor()
 
 def find(q):
@@ -140,7 +143,9 @@ def find(q):
         see(q)
     if x == 0:
         find(q)
-        
+
+print("Choose color: red, blue, green, yellow, or random")
+            
 c = input("Choose a color ")
 print(c)
 if c == "red":
@@ -151,6 +156,8 @@ if c == "blue":
     q = 3
 if c == "yellow":
     q = 4
+if c == "random":
+    q = randrange(1,4)
 find(q)
 
 
