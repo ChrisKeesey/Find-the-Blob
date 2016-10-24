@@ -134,7 +134,7 @@ def see(q):
         nextcolor()
 
 def find(q):
-    turnBy(randrange(0,45))
+    turnBy(randrange(25,50))
     takePicture()
     pic=takePicture()
     x=findColorSpot(pic,q)
