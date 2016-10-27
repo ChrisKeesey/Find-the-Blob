@@ -95,9 +95,32 @@ def findColorSpot(picture, color):
 # 4-YELLOW
 
 ######################Code Starts Here##################################
+def changecolor(a,b,c,d,e):
+    poly = Circle((50, 50), e)
+    poly.bodyType = "static"
+    poly.color = Color(a)
+    poly.outline = Color("black")
+    sim.addShape(poly)
+    poly = Circle((50, 450), e)
+    poly.bodyType = "static"
+    poly.color = Color(b)
+    poly.outline = Color("black")
+    sim.addShape(poly)
+    poly = Circle((450, 450), e)
+    poly.bodyType = "static"
+    poly.color = Color(c)
+    poly.outline = Color("black")
+    sim.addShape(poly)
+    poly = Circle((450, 50), e)
+    poly.bodyType = "static"
+    poly.color = Color(d)
+    poly.outline = Color("black")
+    sim.addShape(poly)
 
-def nextcolor():
+
+def nextcolor1():
     backward(2.5,2)
+    changecolor("red","blue","green","yellow",46)
     v = input("Choose a another color ")
     if v == "red":
         q = 1
@@ -107,7 +130,57 @@ def nextcolor():
         q = 3
     if v == "yellow":
         q = 4
-    if c == "random":
+    if v == "random":
+        q = randrange(1,4)
+    t = t+1
+    find(q)
+    
+
+def nextcolor2():
+    backward(2.5,2)
+    changecolor("yellow","red","blue","green",47)
+    v = input("Choose a another color ")
+    if v == "red":
+        q = 1
+    if v == "green":
+        q = 2
+    if v == "blue":
+        q = 3
+    if v == "yellow":
+        q = 4
+    if v == "random":
+        q = randrange(1,4)
+    find(q)
+
+def nextcolor3():
+    backward(2.5,2)
+    changecolor("green","yellow","red","blue",48)
+    v = input("Choose a another color ")
+    if v == "red":
+        q = 1
+    if v == "green":
+        q = 2
+    if v == "blue":
+        q = 3
+    if v == "yellow":
+        q = 4
+    if v == "random":
+        q = randrange(1,4)
+    find(q)
+
+def nextcolor4():
+    backward(2.5,2)
+    changecolor("blue","green","yellow","red",49)
+    v = input("Choose a another color ")
+    if v == "red":
+        q = 1
+    if v == "green":
+        q = 2
+    if v == "blue":
+        q = 3
+    if v == "yellow":
+        q = 4
+    if v == "random":
         q = randrange(1,4)
     find(q)
 
@@ -116,13 +189,13 @@ def see(q):
     pic=takePicture()
     x=findColorSpot(pic,q)
     print(x)
-    if 130<x<256:
-        turnBy(-2)
+    if 132<x<256:
+        turnBy(-3)
         see(q)
-    if 0<x<126:
-        turnBy(2)
+    if 0<x<125:
+        turnBy(3)
         see(q)
-    if 125<x<131:
+    if 124<x<133:
         forward(2.5,2)
         see(q)
     if x == 0:
@@ -131,7 +204,18 @@ def see(q):
     if x == -1:
         stop()
         print("Blob Found!")
-        nextcolor()
+        if t == 2:
+            nextcolor2()
+            t == 3
+        if t == 1:
+            nextcolor1()
+            
+        if t == 3:
+            nextcolor3()
+            t == 4
+        if t == 4:
+            nextcolor4()
+            t == 1
 
 def find(q):
     turnBy(randrange(0,45))
@@ -143,6 +227,9 @@ def find(q):
         see(q)
     if x == 0:
         find(q)
+
+
+t = 1         
 
 print("Choose color: red, blue, green, yellow, or random")
             
