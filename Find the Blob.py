@@ -95,6 +95,7 @@ def findColorSpot(picture, color):
 # 4-YELLOW
 
 ######################Code Starts Here##################################
+t = 1
 def changecolor(a,b,c,d,e):
     poly = Circle((50, 50), e)
     poly.bodyType = "static"
@@ -132,7 +133,6 @@ def nextcolor1():
         q = 4
     if v == "random":
         q = randrange(1,4)
-    t = t+1
     find(q)
     
 
@@ -185,6 +185,7 @@ def nextcolor4():
     find(q)
 
 def see(q):
+    t = 1
     takePicture()
     pic=takePicture()
     x=findColorSpot(pic,q)
@@ -204,18 +205,18 @@ def see(q):
     if x == -1:
         stop()
         print("Blob Found!")
-        if t == 2:
-            nextcolor2()
-            t == 3
         if t == 1:
+            t = t+1
             nextcolor1()
-            
-        if t == 3:
+        elif t == 2:
+            t = t+1
+            nextcolor2()
+        elif t == 3:
+            t = 4
             nextcolor3()
-            t == 4
-        if t == 4:
+        elif t == 4:
+            t = 1
             nextcolor4()
-            t == 1
 
 def find(q):
     turnBy(randrange(0,45))
@@ -229,7 +230,6 @@ def find(q):
         find(q)
 
 
-t = 1         
 
 print("Choose color: red, blue, green, yellow, or random")
             
@@ -246,7 +246,6 @@ if c == "yellow":
 if c == "random":
     q = randrange(1,4)
 find(q)
-
 
 
 
