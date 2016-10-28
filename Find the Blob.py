@@ -184,8 +184,8 @@ def nextcolor4():
         q = randrange(1,4)
     find(q)
 
-def see(q):
-    t = 1
+def see(q,u):
+    t = u
     takePicture()
     pic=takePicture()
     x=findColorSpot(pic,q)
@@ -206,16 +206,12 @@ def see(q):
         stop()
         print("Blob Found!")
         if t == 1:
-            t = t+1
             nextcolor1()
         elif t == 2:
-            t = t+1
             nextcolor2()
         elif t == 3:
-            t = 4
             nextcolor3()
         elif t == 4:
-            t = 1
             nextcolor4()
 
 def find(q):
@@ -229,7 +225,7 @@ def find(q):
     if x == 0:
         find(q)
 
-
+u = 1
 
 print("Choose color: red, blue, green, yellow, or random")
             
